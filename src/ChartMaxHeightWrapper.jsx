@@ -1,4 +1,29 @@
 import React, { Component } from "react";
+import { createStore } from "redux";
+import { connect } from "react-redux";
+
+const UPDATE_HEIGHT = "UPDATE_HEIGHT";
+
+// action
+const updateHeight = height => ({
+  type: UPDATE_HEIGHT,
+  height: height
+});
+
+// reducer
+const reducer = (state = [], action) => {
+  switch (action.type) {
+    case UPDATE_HEIGHT:
+      return [...state];
+    default:
+      return state;
+  }
+};
+
+// store
+let store = createStore(reducer);
+
+const mapDispatchToProps = dispatch => {};
 
 class ChartMaxHeightWrapper extends Component {
   constructor(props) {
@@ -8,8 +33,7 @@ class ChartMaxHeightWrapper extends Component {
   }
 
   updateDim() {
-    this.height = window.innerHeight;
-    this.forceUpdate();
+    store.dispatch(updateHeight(window.innerHeight));
   }
 
   componentDidMount() {
