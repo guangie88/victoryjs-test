@@ -1,25 +1,40 @@
 import React, { Component } from "react";
+import { Button, Grid, Row, Col } from "react-bootstrap";
+
 import { VictoryChart, VictoryBar, VictoryTheme } from "victory";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ChartMaxHeightWrapper from "./ChartMaxHeightWrapper";
 import "./App.css";
 
-class App extends Component {
+export default class App extends Component {
   render() {
     const sampleData = [{ x: 1, y: 1 }, { x: 2, y: 2 }, { x: 3, y: 3 }];
 
     return (
-      <div className="App">
-        <ChartMaxHeightWrapper>
-          <VictoryChart theme={VictoryTheme.material}>
-            <VictoryBar
-              style={{ data: { fill: "#c43a31" } }}
-              data={sampleData}
-            />
-          </VictoryChart>
-        </ChartMaxHeightWrapper>
+      <div>
+        <Grid>
+          <Row>
+            <Col xs={8} xsOffset={2}>
+              <ChartMaxHeightWrapper>
+                <VictoryChart theme={VictoryTheme.material}>
+                  <VictoryBar
+                    style={{ data: { fill: "#c43a31" } }}
+                    data={sampleData}
+                  />
+                </VictoryChart>
+              </ChartMaxHeightWrapper>
+            </Col>
+            <Col xs={2}>
+              <div>
+                <Button style={{ width: 50 }}>+</Button>
+              </div>
+              <div>
+                <Button style={{ width: 50 }}>-</Button>
+              </div>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }
 }
-
-export default App;
