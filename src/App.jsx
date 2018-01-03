@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Button, Grid, Row, Col } from "react-bootstrap";
+import { Grid, Row, Col } from "react-flexbox-grid";
 
 import { VictoryChart, VictoryBar, VictoryTheme } from "victory";
-import "bootstrap/dist/css/bootstrap.min.css";
 import ChartMaxHeightWrapper from "./ChartMaxHeightWrapper";
 import "./App.css";
 
@@ -26,10 +25,10 @@ export default class App extends Component {
             </Col>
             <Col xs={2}>
               <div>
-                <Button style={{ width: 50 }}>+</Button>
+                <button style={{ width: 50 }}>+</button>
               </div>
               <div>
-                <Button style={{ width: 50 }}>-</Button>
+                <button style={{ width: 50 }}>-</button>
               </div>
             </Col>
           </Row>
