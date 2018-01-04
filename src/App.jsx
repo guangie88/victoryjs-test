@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Grid, Row, Col } from "react-flexbox-grid";
+import Modal from "react-modal";
 
-import { VictoryChart, VictoryBar, VictoryTheme } from "victory";
-import ChartMaxHeightWrapper from "./ChartMaxHeightWrapper";
+import { VictoryAxis, VictoryChart, VictoryBar } from "victory";
 import "./App.css";
 
 export default class App extends Component {
@@ -11,28 +10,62 @@ export default class App extends Component {
 
     return (
       <div>
-        <Grid>
-          <Row>
-            <Col xs={8} xsOffset={2}>
-              <ChartMaxHeightWrapper>
-                <VictoryChart theme={VictoryTheme.material}>
+        <Modal style={{ content: { overflow: "hidden" } }} isOpen>
+          <div className="fill-height">
+            <div
+              style={{
+                borderWidth: 1,
+                borderStyle: "solid",
+                textAlign: "center",
+                height: 80
+              }}
+            >
+              a
+            </div>
+
+            <div className="fill-remaining">
+              <div className="fill-width">
+                <div style={{ width: 50 }} />
+                <VictoryChart style={{ parent: { marginBottom: 10 } }}>
+                  <VictoryAxis
+                    style={{
+                      axisLabel: { fontSize: 15, padding: 20 },
+                      tickLabels: { fontSize: 12, padding: 2 }
+                    }}
+                    label="x"
+                  />
+                  <VictoryAxis
+                    style={{
+                      axisLabel: { fontSize: 15, padding: 30 },
+                      tickLabels: { fontSize: 12, padding: 2 }
+                    }}
+                    label="y"
+                    fixLabelOverlap
+                    dependentAxis
+                  />
                   <VictoryBar
                     style={{ data: { fill: "#c43a31" } }}
                     data={sampleData}
                   />
                 </VictoryChart>
-              </ChartMaxHeightWrapper>
-            </Col>
-            <Col xs={2}>
-              <div>
-                <button style={{ width: 50 }}>+</button>
+                <div style={{ width: 50 }}>
+                  <button style={{ width: 40 }}>+</button>
+                  <button style={{ width: 40 }}>-</button>
+                </div>
               </div>
-              <div>
-                <button style={{ width: 50 }}>-</button>
-              </div>
-            </Col>
-          </Row>
-        </Grid>
+            </div>
+            <div
+              style={{
+                borderWidth: 1,
+                borderStyle: "solid",
+                textAlign: "center",
+                height: 50
+              }}
+            >
+              d
+            </div>
+          </div>
+        </Modal>
       </div>
     );
   }
