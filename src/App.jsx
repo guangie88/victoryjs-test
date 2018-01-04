@@ -26,7 +26,7 @@ export default class App extends Component {
             <div className="fill-remaining">
               <div className="fill-width">
                 <div style={{ width: 50 }} />
-                <VictoryChart style={{ parent: { marginBottom: 10 } }}>
+                <VictoryChart>
                   <VictoryAxis
                     style={{
                       axisLabel: { fontSize: 15, padding: 20 },
