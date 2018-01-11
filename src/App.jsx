@@ -36,15 +36,9 @@ export default class App extends Component {
               <div className="fill-width">
                 <div style={{ width: 50 }} />
                 <ResizableImbued
-                  onResize={(width, height) => {
-                    this.setState({ width, height });
-                  }}
+                  style={{ borderWidth: 1, borderStyle: "dotted" }}
                 >
-                  <VictoryChart
-                    width={this.state.width}
-                    height={this.state.height}
-                    theme={VictoryTheme.material}
-                  >
+                  <VictoryChart theme={VictoryTheme.material}>
                     <VictoryAxis
                       style={{
                         axisLabel: { fontSize: 15, padding: 20 },

@@ -11,25 +11,35 @@ export default class ResizableImbued extends Component {
     };
 
     this.onResize = this.onResize.bind(this);
+    this.imbueChildren = this.imbueChildren.bind(this);
   }
 
   onResize(width, height) {
-    return this.props.onResize(width, height);
+    this.setState({ width, height });
+  }
+
+  imbueChildren(children) {
+    return React.Children.map(children, c =>
+      React.cloneElement(c, {
+        width: this.state.width,
+        height: this.state.height
+      })
+    );
   }
 
   render() {
+    const imbuedStyle = {
+      ...this.props.style,
+      maxHeight: "100%",
+      height: "100%",
+      maxWidth: "100%",
+      width: "100%"
+    };
+
     return (
-      <div
-        {...this.props.styles}
-        style={{
-          maxHeight: "100%",
-          height: "100%",
-          maxWidth: "100%",
-          width: "100%"
-        }}
-      >
+      <div style={imbuedStyle}>
         <ResizeDetector handleWidth handleHeight onResize={this.onResize} />
-        {this.props.children}
+        {this.imbueChildren(this.props.children)}
       </div>
     );
   }
